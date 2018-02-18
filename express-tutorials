@@ -1,0 +1,15 @@
+$ npm install express -g
+$ npm install express-generator -g
+
+$ express anger6Blog
+$ cd anger6Blog
+$ npm install
+$ DEBUG=anger6Blog npm start
+http://localhost:3000
+
+$ cd anger6Blog
+$ ng new client
+$ cd client
+$ npm install --save
+
+
