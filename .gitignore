@@ -1,0 +1,9 @@
+*.log
+*.tmp
+*.tmp.*
+.vscode/
+.idea/
+.dist/
+dist/
+node_modules/
+www/
