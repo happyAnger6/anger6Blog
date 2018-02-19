@@ -1,0 +1,15 @@
+<div class="container">
+  <label><i class="fa fa-plus-square" aria-hidden="true">添加类别</i></label>
+  <form (ngSubmit)="onAddCategory()" #newCategoryForm="ngForm">
+    <div class="form-group">
+      <label for="Name">类别名称:</label>
+      <input type="text" class="form-control" id="Name" [(ngModel)]="newCategory.Name" name="categoryName" required #categoryName="ngModel"/>
+    </div>
+    <div [hidden]="categoryName.valid || categoryName.pristine" class="alert alert-danger">
+      必须输入名字.
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!newCategoryForm.form.valid">添加</button>
+
+  </form>
+</div>

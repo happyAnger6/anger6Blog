@@ -5,10 +5,13 @@ var Category = require('../../models/category');
 
 /* GET categories listing. */
 router.get('/json', function(req, res, next) {
-    Cranch.find(function(err, categories){
+    Category.find(function(err, categories){
+       console.log('aa');
        if (err)  {
            return next(err);
        }
        res.json(categories);
     })
 });
+
+module.exports = router;

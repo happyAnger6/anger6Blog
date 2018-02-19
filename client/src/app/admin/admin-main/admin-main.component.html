@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <h4><i class="fa fa-windows fa-lg">管理页面</i></h4>
+  <div class="row">
+    <div class="col-md-2">
+      <nav class="navbar bg-light bg-danger">
+        <ul class="nav nav-tabs-justified">
+          <li class="list-group-item list-group-item-danger">
+            <i class="fa fa-check fa-lg"><a routerLink="categories">  类别管理</a></i>
+          </li>
+          <li class="list-group-item list-group-item-success">
+            <i class="fa fa-tree fa-lg"><a routerLink="articles">  文章管理</a></i>
+          </li>
+          <li class="list-group-item list-group-item-warning">
+            <i class="fa fa-user-plus fa-lg"><a routerLink="users">  用户管理</a></i>
+          </li>
+          <li class="list-group-item list-group-item-dark">
+            <i class="fa fa-list fa-lg"><a routerLink="comments">  评论管理</a></i>
+          </li>
+          <li class="list-group-item list-group-item-primary">
+            <i class="fa fa-calendar-times-o fa-lg"><a routerLink="systems">  系统管理</a></i>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
