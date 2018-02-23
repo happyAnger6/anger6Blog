@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CKEditorModule } from "ng2-ckeditor";
 
 import { AdminRoutingModule } from './admin-routing.module';
 
@@ -12,6 +13,7 @@ import { ArticleComponent } from './article/article.component';
   imports: [
     CommonModule,
     FormsModule,
+    CKEditorModule,
     AdminRoutingModule
   ],
   declarations: [AdminMainComponent, CategoryComponent, ArticleComponent]

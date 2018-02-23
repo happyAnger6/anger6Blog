@@ -1,3 +1,45 @@
-<p>
-  article works!
-</p>
+<div class="btn-group">
+  <button type="button" class="btn btn-default" (click)="onSelectList()">文章列表</button>
+  <button type="button" class="btn btn-default" (click)="onSelectNew()">写新文章</button>
+</div>
+<br/>
+
+<div>
+  <div *ngIf="selectedItem===2">
+  <h1>写新文章</h1>
+  <form (ngSubmit)="onAddArticle()" #newArticleForm="ngForm">
+    <div class="form-group">
+      <label for="title">文章标题:</label>
+      <input type="text" class="form-control" id="title" [(ngModel)]="newArticle.Title" name="articleTitle" required #articleTitle="ngModel"/>
+    </div>
+    <div [hidden]="articleTitle.valid || articleTitle.pristine" class="alert alert-danger">
+      必须输入标题.
+    </div>
+
+    <ckeditor [(ngModel)]="newArticle.Content" debounce="500"  name="content" [config]="config">
+    </ckeditor>
+
+    <br/>
+    <div class="form-group">
+      <label>类别</label>
+      <select [(ngModel)]="newArticle.Category" name="category" class="form-control">
+        <option *ngFor="let cate of allShowCategories" [value]="cate.Name">{{cate.ShowName}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!newArticleForm.form.valid">发表</button>
+
+  </form>
+  </div>
+</div>
+
+<div *ngIf="selectedItem===1">
+    <div class="col-md-8">
+      <div class="article-item" *ngFor="let article of allArticles">
+        <h2>{{ article.Title }}</h2>
+        <p [innerHTML]="article.Content"></p>
+        <footer>{{article.Author}} 发表于: {{ article.PublishDate }}</footer>
+      </div>
+      <br/>
+    </div>
+</div>

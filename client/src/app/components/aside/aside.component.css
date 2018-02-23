@@ -1,0 +1,97 @@
+.tabs {
+  margin: 0 0 20px 0;
+  display: block;
+}
+
+.tabs ul.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tabbed_widget .nav {
+  font-family: "Microsoft YaHei", 'Myriad Pro','Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.tabbed_widget ul {
+  margin: 0;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+ul {
+  list-style: disc inside;
+}
+
+dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, blockquote, fieldset, figure {
+  margin-bottom: 20px;
+}
+
+.tabs ul.nav li.active {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-bottom-color: #fff !important;
+}
+
+.tabs ul.nav li {
+  float: left;
+  position: relative;
+  margin: 0;
+  z-index: 10;
+  padding: 0;
+  margin: 0 0 -1px 0;
+  border: 1px solid transparent;
+  border-bottom-color: #e8e8e8;
+}
+
+tabbed_widget li {
+  list-style: none;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  margin-left: 0;
+  width: auto;
+}
+
+li {
+  margin-left: 0;
+}
+
+li {
+  display: list-item;
+}
+
+.tabbed_widget #link-tab2 {
+  background-position: -32px 0;
+}
+
+tabbed_widget ul.nav li.active a, .tabbed_widget ul.nav li.active a:hover, .tabbed_widget ul.nav li a, .tabbed_widget ul.nav li a:hover {
+  background: none!important;
+}
+
+.tabbed_widget ul.nav li a {
+  display: block;
+  padding: 10px;
+  background: none;
+  text-indent: 0;
+  width: auto;
+  outline: none;
+}
+
+.tabs ul.nav li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  overflow: hidden;
+}
+
+a, .tabs ul.nav li a:hover, .tabs ul.nav li.active a, .dropcap, .toggle.hover .toggle-title, li.comment cite a:hover, h3.widget-title, .post-meta .meta-title:hover, .the-latest a:hover h4, .aw_socialcounter_widget li a:hover, .aw_tabbed_widget #tab-latest-comments a:hover {
+  color: #0099cc;
+}
+
+a {
+  color: #09c;
+}
+

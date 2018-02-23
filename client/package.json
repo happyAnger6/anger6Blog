@@ -21,7 +21,12 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.5",
+    "@ckeditor/ckeditor5-build-classic": "^1.0.0-alpha.2",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0",
+    "angular-2-dropdown-multiselect": "^1.6.3",
     "core-js": "^2.4.1",
+    "ng2-ckeditor": "^1.1.14",
+    "popper.js": "^1.12.9",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

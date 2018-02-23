@@ -1,6 +1,13 @@
-<div class="container">
+<div class="btn-group">
+  <button type="button" class="btn btn-default" (click)="onSelectList()">类别列表</button>
+  <button type="button" class="btn btn-default" (click)="onSelectNew()">添加类别</button>
+</div>
+<br/>
+
+<div class="container" *ngIf="oper===2">
   <label><i class="fa fa-plus-square" aria-hidden="true">添加类别</i></label>
   <form (ngSubmit)="onAddCategory()" #newCategoryForm="ngForm">
+
     <div class="form-group">
       <label for="Name">类别名称:</label>
       <input type="text" class="form-control" id="Name" [(ngModel)]="newCategory.Name" name="categoryName" required #categoryName="ngModel"/>
@@ -9,7 +16,47 @@
       必须输入名字.
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="!newCategoryForm.form.valid">添加</button>
+    <div class="form-group">
+      <label>父类别</label>
+l      <select [(ngModel)]="newCategory.ParentName" name="cateParent" class="form-control">
+       <option *ngFor="let cate of allShowCategories" [value]="cate.Name">{{cate.ShowName}} {{ cate.Type}}</option>
+      </select>
+    </div>
 
+    <div class="form-group">
+      <label>类型</label>
+          <select [(ngModel)]="newCategory.Type" name="cateType" class="form-control">
+          <option [value]=0>普通</option>
+          <option [value]=1>教程(支持文章章节)</option>
+    </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!newCategoryForm.form.valid">添加</button>
   </form>
+</div>
+
+<br/>
+<div class="row" *ngIf="oper===1">
+  <div class="col-md-8">
+    <table class="table-bordered table-hover table-striped table-responsive">
+      <thead class="thead-dark">
+      <tr>
+        <th>名 称</th>
+        <th>父 类 别</th>
+        <th>类 型</th>
+        <th>操 作</th>
+        <th>操 作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cate of allCategories">
+        <td><i class="fa fa-user-circle"> {{ cate.Name}} </i></td>
+        <td><i class="fa fa-hand-grab-o"> {{ cate.ParentName }} </i></td>
+        <td><i class="fa fa-hand-grab-o"> {{ cate.Type }} </i></td>
+        <td><i class="fa fa-pencil-square-o" (click)="onEditCategory(cate._id)"> 编 辑 </i></td>
+        <td><i class="fa fa-minus-square-o"  (click)="onDeleteCategory(cate._id)"> 删 除 </i></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

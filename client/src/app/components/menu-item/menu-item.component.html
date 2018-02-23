@@ -1,0 +1,17 @@
+<app-menu-list (evSelectMenu)="onSelectedMenu($event)"></app-menu-list>
+<app-path-nav [paths]="paths"></app-path-nav>
+
+<section class="content-wrap">
+<div class="container">
+    <div class="row">
+      <main class="col-md-8 main-content">
+        <app-article-pages *ngIf="!selectedArticle" [allArticles]="allArticles" (evSelectedArticle)="onSelectArticle($event)"></app-article-pages>
+        <app-article-details [article]="selectedArticle" *ngIf="selectedArticle"></app-article-details>
+      </main>
+
+      <app-aside></app-aside>
+    </div>
+</div>
+</section>
+
+

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { CategoryComponent } from './category/category.component';
+import { ArticleComponent } from './article/article.component';
 
 import { AuthGuardService } from '../service/auth-guard.service';
 
@@ -11,8 +12,11 @@ const adminRoutes: Routes = [
     canActivate: [AuthGuardService],
     children: [
         {   path: 'categories',
-            component: CategoryComponent 
-        }, 
+            component: CategoryComponent
+        },
+        {   path: 'articles',
+            component: ArticleComponent
+        },
     ]
   }
 ];

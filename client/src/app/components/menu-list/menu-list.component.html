@@ -1,0 +1,10 @@
+<div class="row menu-navigation">
+  <div class="col-md-1" *ngFor="let cate of allRootCategories">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn" ngbDropdownToggle> {{ cate.Name }}</button>
+      <div ngbDropdownMenu>
+        <button class="btn dropdown-item" *ngFor="let item of cate.ChildrenNames" (click)="onSelectMenu(item)">{{ item }}</button>
+      </div>
+    </div>
+  </div>
+</div>
