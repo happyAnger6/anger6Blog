@@ -15,7 +15,6 @@ router.get('/json', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next){
-    console.log(req.body);
     var category = new Category(req.body);
     if (category.ParentName) {
        Category.findOne({Name: category.ParentName}, function(err, parent){
