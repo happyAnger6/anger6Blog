@@ -15,6 +15,8 @@ var ArticleSchema = new mongoose.Schema({
     Likes: {type: Number, default: 0},
     UnLikes: {type: Number, default: 0},
     Tags: [String],
+    Chapter: {type: Number, default: 1},
+    Section: {type: Number, default: 1},
     PublishDate: Date
 });
 

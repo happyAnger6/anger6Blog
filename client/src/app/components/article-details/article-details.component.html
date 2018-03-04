@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
     <article class="post" *ngIf="article">
-      <div class="post-header">
+      <div class="post-head">
         <h1>{{ article.Title }}</h1>
       </div>
 
@@ -9,7 +9,7 @@
         <span class="author">作者: {{ article.Author }}</span>
         <time class="post-date">{{article.PublishDate}}</time>
       </div>
-      <div class="post-meta">
+      <div class="post-meta1">
         <i class="fa fa-thumbs-o-up" >喜欢 {{ article.Likes }}</i>
         <i class="fa fa-thumbs-o-down" >不喜欢 {{ article.UnLikes }}</i>
       </div>

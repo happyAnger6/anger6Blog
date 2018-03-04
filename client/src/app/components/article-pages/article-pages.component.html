@@ -1,19 +1,15 @@
 <div class="row" *ngIf="!selectedArticle">
 <article class="post" *ngFor="let article of allArticles">
-  <div class="post-header">
-    <h1 class="post-title"><a (click)="selectArticle(article)">{{ article.Title }}</a></h1>
+  <div class="post-head">
+    <h1 class="post-title" (click)="selectArticle(article)"> {{article.Title}} </h1>
   </div>
 
-  <div class="post-meta">
+  <div class="post-meta1">
     <span class="author">作者: {{ article.Author }}</span>
     <time class="post-date">{{article.PublishDate}}</time>
   </div>
-  <div class="post-meta">
-    <i class="fa fa-thumbs-o-up" (click)="onLike(article)">喜欢 {{ article.Likes }}</i>
-    <i class="fa fa-thumbs-o-down" (click)="onUnLike(article)">不喜欢 {{ article.UnLikes }}</i>
-  </div>
   <div class="post-content">
-    <p [innerHTML]="article.Content | slice:0:100"></p>
+    <p [innerHTML]="article.Content | slice:0:200"></p>
   </div>
 
   <div class="post-permalink">
@@ -29,6 +25,10 @@
     <a title="分享到豆瓣" class="bshare-douban"></a>
     <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
   </div>-->
+  <div class="post-meta">
+    <i class="fa fa-thumbs-o-up" (click)="onLike(article)">喜欢 {{ article.Likes }}</i>
+    <i class="fa fa-thumbs-o-down" (click)="onUnLike(article)">不喜欢 {{ article.UnLikes }}</i>
+  </div>
   <footer class="post-footer clearfix"></footer>
 </article>
 </div>

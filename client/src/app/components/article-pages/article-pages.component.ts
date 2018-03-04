@@ -13,6 +13,8 @@ export class ArticlePagesComponent implements OnInit {
 
   @Input() allArticles: Article[];
   @Output() evSelectedArticle = new EventEmitter<Article>();
+  @Output() evNextPage = new EventEmitter<number>();
+
   public selectedArticle: Article;
 
   constructor(private articleService: ArticleService,
@@ -40,4 +42,7 @@ export class ArticlePagesComponent implements OnInit {
     this.evSelectedArticle.emit(article);
   }
 
+  onCurPage(page) {
+    this.evNextPage.emit(page);
+  }
 }

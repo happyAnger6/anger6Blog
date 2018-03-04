@@ -5,6 +5,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminModule } from './admin/admin.module';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SharesModule } from './shares/shares.module'
+
 import { AppComponent } from './app.component';
 
 import { AuthGuardService } from './service/auth-guard.service';
@@ -24,6 +26,9 @@ import { ArticleDetailsComponent } from './components/article-details/article-de
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { PathNavComponent } from './components/path-nav/path-nav.component';
 import { NewestArticlesComponent } from './components/newest-articles/newest-articles.component';
+import { MyHomesComponent } from './components/my-homes/my-homes.component';
+import { BlogSourcesComponent } from './components/blog-sources/blog-sources.component';
+import { CategoryCloudComponent } from './components/category-cloud/category-cloud.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,9 @@ import { NewestArticlesComponent } from './components/newest-articles/newest-art
     MenuListComponent,
     PathNavComponent,
     NewestArticlesComponent,
+    MyHomesComponent,
+    BlogSourcesComponent,
+    CategoryCloudComponent,
   ],
   imports: [
     NgbModule.forRoot(),
@@ -42,6 +50,7 @@ import { NewestArticlesComponent } from './components/newest-articles/newest-art
     HttpClientModule,
     CKEditorModule,
     AdminModule,
+    SharesModule,
     AppRoutingModule
   ],
   providers: [

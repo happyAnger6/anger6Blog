@@ -18,12 +18,24 @@ export class ArticleService {
     return this.curArticle;
   }
 
+  getAllArticlesByPage(page) {
+    return this.http.get<Article[]>(API_ARTICLES_URI + 'json?page=' + page);
+  }
+
   getAllArticles(fn) {
     this.http.get<Article[]>(API_ARTICLES_URI + 'json',
     )
       .subscribe(data => {
         fn(null, data);
       });
+  }
+
+  getArticles() {
+    return this.http.get<Article[]>(API_ARTICLES_URI + 'json');
+  }
+
+  getArticlesByCategoryByPage(category: string, page) {
+    return this.http.get<Article[]>(API_ARTICLES_URI + 'json?category=' + category + '&page=' + page)
   }
 
   // 获取某个组件的用户信息

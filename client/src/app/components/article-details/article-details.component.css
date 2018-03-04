@@ -1,0 +1,84 @@
+.post {
+  padding: 35px;
+  background: #fff;
+  margin-bottom: 35px;
+  position: relative;
+  overflow: hidden;
+}
+
+.post .post-head .post-title {
+  margin: 0;
+  font-size: 2em;
+  line-height: 1.2em;
+  padding: 0.5em 0.5em;
+  font-family: "Times New Roman";
+  color: #444443;
+}
+
+.post-title:hover {
+
+}
+
+.post .post-head {
+  text-align: center;
+  border-bottom: 2px #e0e0e0 solid;
+  padding: 0.5em;
+}
+
+.post .post-meta {
+  color: #959595;
+  margin: 20px 0 0;
+}
+
+.post .post-meta1 {
+  color: #959595;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.post .post-content {
+  margin: 30px 0;
+}
+
+.post-content {
+  font: 400 18px/1.62 Georgia,"Xin Gothic","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei",sans-serif;
+  color: #444443;
+  font-stretch: normal;
+  font-size: 18px;
+  line-height: 2em;
+  text-indent: 2em;
+}
+
+.post-content p {
+  margin-top: 0;
+  margin-bottom: 1.46em;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  color: #303030;
+}
+
+.btn {
+  padding: 7px 14px;
+  border-radius: 2px;
+}
+
+.btn-default {
+  border: 1px solid #f4645f;
+  background: #f4645f;
+  color: #fff;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.post .post-footer {
+  margin-top: 30px;
+  border-top: 1px solid #ebebeb;
+  padding: 21px 0 0;
+}

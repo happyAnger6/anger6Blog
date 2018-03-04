@@ -5,6 +5,10 @@ $ express anger6Blog
 $ cd anger6Blog
 $ npm install
 $ DEBUG=anger6Blog npm start
+
+#Windows
+set DEBUG=express:* & node index.js
+
 http://localhost:3000
 
 $ cd anger6Blog

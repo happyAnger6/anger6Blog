@@ -1,0 +1,14 @@
+.article-item {
+  background-color: #ffffff;
+  margin: 10px 5px;
+}
+
+.article-item h2 {
+  padding: 10px 10px;
+  font-size: 1.5em;
+  border-bottom: 1px solid #f2dede;
+}
+
+.article-item footer {
+  padding: 10px 10px;
+}

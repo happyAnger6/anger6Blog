@@ -1,0 +1,31 @@
+.widget {
+  background-color: #ffffff;
+  padding: 0.5em 0.5em;
+  margin-bottom: 35px;
+  margin-left: 15px;
+}
+
+.widget h4 {
+  font-size: 1.5em;
+}
+
+.widget .title {
+  color: #6E94FF;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 7px;
+  margin-bottom: 21px;
+  position: relative;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+p i {
+  margin: 0 5px;
+}
+
+p a {
+  color: #e67e22;
+  text-decoration: none;
+}

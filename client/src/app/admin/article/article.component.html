@@ -37,9 +37,8 @@
     <div class="col-md-8">
       <div class="article-item" *ngFor="let article of allArticles">
         <h2>{{ article.Title }}</h2>
-        <p [innerHTML]="article.Content"></p>
         <footer>{{article.Author}} 发表于: {{ article.PublishDate }}</footer>
       </div>
-      <br/>
+      <app-pages-menu [curPage]="curPage" [totalPages]="totalPages" (evPrePage)="onPrePage($event)" (evNextPage)="onNextPage($event)"></app-pages-menu>
     </div>
 </div>

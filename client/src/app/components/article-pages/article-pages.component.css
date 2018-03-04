@@ -10,24 +10,47 @@
   margin: 0;
   font-size: 2em;
   line-height: 1.2em;
+  padding: 0.5em 0.5em;
+  font-family: "Times New Roman";
+  color: #444443;
+}
+
+.post-title:hover {
+
 }
 
 .post .post-head {
   text-align: center;
+  border-bottom: 2px #e0e0e0 solid;
+  padding: 0.5em;
 }
 
-.post .post-head .post-meta {
+.post .post-meta {
   color: #959595;
-  margin: 14px 0 0;
+  margin: 20px 0 0;
+}
+
+.post .post-meta i {
+  cursor: pointer;
+}
+
+.post .post-meta1 {
+  color: #959595;
+  margin: 10px auto;
+  text-align: center;
 }
 
 .post .post-content {
   margin: 30px 0;
 }
 
-post-content {
+.post-content {
   font: 400 18px/1.62 Georgia,"Xin Gothic","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei",sans-serif;
   color: #444443;
+  font-stretch: normal;
+  font-size: 18px;
+  line-height: 2em;
+  text-indent: 2em;
 }
 
 .post-content p {

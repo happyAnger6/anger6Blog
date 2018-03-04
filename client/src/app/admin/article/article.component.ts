@@ -16,8 +16,11 @@ import { ShowCategory } from '../../models/showCategory';
 export class ArticleComponent implements OnInit {
 
   public selectedItem = 0;
+  public curPage = 0;
+  public totalPages = 0;
+  public pageItems = 5;
 
-  public newArticle = new Article('', '', '',
+  public newArticle = new Article('', '', '安哥6',
     [], '', 0, 0, [], Date.now());
   public allArticles: Article[] = [];
 
@@ -48,19 +51,43 @@ export class ArticleComponent implements OnInit {
 
   onSelectNew() {
     this.selectedItem = 2;
+    this.totalPages = 0;
+    this.curPage = 0;
   }
 
   onSelectList()  {
     let comp = this;
     this.selectedItem = 1;
     this.articleService.getAllArticles(function(err, all){
-      comp.allArticles = all
+      comp.allArticles = all;
+      comp.curPage = 1;
+      comp.totalPages = Math.floor(all.length /comp.pageItems) + 1;
     });
   }
 
-  onAddArticle()  {
-    this.articleService.addArticle(this.newArticle, function(err, result){
+  onGetArticlesByPage() {
+    let comp = this;
+    this.articleService.getAllArticlesByPage(this.curPage)
+      .subscribe(result => {
+        comp.allArticles = result;
+      })
+  }
+  onPrePage() {
+    this.curPage--;
+    this.onGetArticlesByPage();
+  }
 
+  onNextPage() {
+    this.curPage++;
+    this.onGetArticlesByPage();
+  }
+
+  onAddArticle()  {
+    let comp = this;
+    this.articleService.addArticle(this.newArticle, function(err, result){
+      if (err == null) {
+        comp.onSelectList();
+      }
     })
   }
 

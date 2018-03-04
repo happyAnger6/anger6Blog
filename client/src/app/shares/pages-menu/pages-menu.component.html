@@ -1,0 +1,5 @@
+<nav class="pagination" role="navigation">
+  <a class="pre-posts" *ngIf="curPage > 1" (click)="onPrePage()"><i class="fa fa-angle-left"></i></a>
+  <span class="page-number">第 {{ curPage }} 页 ⁄ 共 {{ totalPages }} 页</span>
+  <a class="older-posts" *ngIf="totalPages > curPage" (click)="onNextPage()"><i class="fa fa-angle-right"></i></a>
+</nav>

@@ -2,29 +2,36 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
+var page = require('../../lib/middlwares/page');
+
 var Article = require('../../models/article');
 
 /* GET categories listing. */
 router.get('/json', function(req, res, next) {
     if(req.query && req.query.category) {
+        console.log("category", req.query.category);
         Article.find({Category: req.query.category}).sort({PublishDate: 1})
             .exec(function(err, articles){
                 if (err) {
                     return next(err);
                 }
-                res.json(articles);
+                req.totals = articles;
+                next();
+                //res.json(articles);
             });
     }
     else {
+        console.log("all");
         Article.find().sort({PublistDate: 1})
             .exec(function(err, articles){
                 if (err) {
                     return next(err);
                 }
-                res.json(articles);
+                req.totals = articles;
+                next();
             });
     }
-});
+}, page(5));
 
 router.get('/:id/json', function(req, res, next) {
     id = req.params.id;
