@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var ejs = require('ejs');
 var err_handler = require('./lib/err_handlers');
 
 var index = require('./routes/index');
@@ -22,9 +23,10 @@ db.once('open', function() {
     // we're connected!
     // view engine setup
     app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'jade');
+    app.engine("html", ejs.__express);
+    app.set('view engine', 'html');
 
-    app.all('*', function(req, res, next) {
+    app.all('/api/*', function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization");
@@ -45,7 +47,7 @@ db.once('open', function() {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, 'client/dist')));
 
     app.use('/', index);
     app.use('/users', users);

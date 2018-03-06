@@ -69,7 +69,8 @@ export class MenuItemComponent implements OnInit {
       .subscribe(result => {
         comp.allArticles = result;
         comp.curPage = 1;
-        comp.totalPages = Math.floor(comp.allArticles.length/comp.pageItems) + 1;
+        comp.totalPages = Math.ceil(comp.allArticles.length/comp.pageItems);
+        comp.allArticles = comp.allArticles.slice(0, comp.pageItems);
       },
       err => {
       }
@@ -85,6 +86,7 @@ export class MenuItemComponent implements OnInit {
     this.articleService.getArticlesByCategory(item)
       .subscribe(result => {
         comp.allArticles = result;
+        comp.totalPages = Math.ceil(comp.allArticles.length/comp.pageItems);
       },
       err => {
 

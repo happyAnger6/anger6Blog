@@ -24,6 +24,7 @@ export class ArticleDetailsComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         this.articleID = params.get('id');
+        if(!this.articleID) return null;
         console.log('id: ', this.articleID)
         return this.articleService.getArticlesById(this.articleID)
       })

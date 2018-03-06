@@ -61,7 +61,8 @@ export class ArticleComponent implements OnInit {
     this.articleService.getAllArticles(function(err, all){
       comp.allArticles = all;
       comp.curPage = 1;
-      comp.totalPages = Math.floor(all.length /comp.pageItems) + 1;
+      comp.totalPages = Math.ceil(all.length /comp.pageItems);
+      comp.allArticles = comp.allArticles.slice(0, comp.pageItems);
     });
   }
 
