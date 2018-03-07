@@ -29,6 +29,7 @@ import { NewestArticlesComponent } from './components/newest-articles/newest-art
 import { MyHomesComponent } from './components/my-homes/my-homes.component';
 import { BlogSourcesComponent } from './components/blog-sources/blog-sources.component';
 import { CategoryCloudComponent } from './components/category-cloud/category-cloud.component';
+import { MyProjectsListComponent } from './components/my-projects-list/my-projects-list.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CategoryCloudComponent } from './components/category-cloud/category-clo
     MyHomesComponent,
     BlogSourcesComponent,
     CategoryCloudComponent,
+    MyProjectsListComponent,
   ],
   imports: [
     NgbModule.forRoot(),

@@ -41,6 +41,7 @@ export class MenuItemComponent implements OnInit {
   initPaths(item) {
     this.pathService.clearPaths();
     this.pathService.addPath(new Path('Home', '/', 0));
+    if(!item) return;
     this.pathService.addPath(new Path(item, '/menu/' + item, 0));
   }
 
