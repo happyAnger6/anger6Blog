@@ -83,6 +83,7 @@ export class MenuItemComponent implements OnInit {
     this.initPages();
     this.menu_item = item;
     this.selectedArticle = null;
+    this.initPaths(item);
     this.paths = this.pathService.getPaths();
     this.articleService.getArticlesByCategory(item)
       .subscribe(result => {

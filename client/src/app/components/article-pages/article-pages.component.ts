@@ -38,7 +38,7 @@ export class ArticlePagesComponent implements OnInit {
   }
 
   selectArticle(article) {
-    this.pathService.addPath(new Path(article.Title, '#', 0));
+    this.pathService.addPath(new Path(article.Title, '#', -1));
     this.evSelectedArticle.emit(article);
   }
 

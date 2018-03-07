@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { Path } from '../../models/path';
 
 @Component({
@@ -8,11 +8,16 @@ import { Path } from '../../models/path';
 })
 export class PathNavComponent implements OnInit {
 
+  @Output() evSelectedMenu = new EventEmitter<String>();
   @Input() paths: Path[];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelectMenu(menu) {
+    this.evSelectedMenu.emit(menu);
   }
 
 }

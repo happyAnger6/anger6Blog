@@ -1,3 +1,5 @@
 <ol class="breadcrumb" *ngIf="paths">
-  <span>当前页面</span><li *ngFor="let path of paths"><a [routerLink]="[path.Url]"><i class="fa fa-arrow-circle-right" aria-hidden="true">{{ path.Name }}</i></a></li>
+  <span>当前页面</span><li *ngFor="let path of paths">
+  <a (click)="onSelectMenu(path.Name)" *ngIf="path.Flag===0"><i class="fa fa-arrow-circle-right" aria-hidden="true">{{ path.Name }}</i></a>
+  <a *ngIf="path.Flag===-1"><i class="fa fa-arrow-circle-right" aria-hidden="true">{{ path.Name }}</i></a></li>
 </ol>

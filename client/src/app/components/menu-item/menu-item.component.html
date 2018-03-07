@@ -1,5 +1,5 @@
 <app-menu-list (evSelectMenu)="onSelectedMenu($event)"></app-menu-list>
-<app-path-nav [paths]="paths"></app-path-nav>
+<app-path-nav (evSelectedMenu)="onSelectedMenu($event)" [paths]="paths"></app-path-nav>
 
 <section class="content-wrap">
 <div class="container">
