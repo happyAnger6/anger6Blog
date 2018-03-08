@@ -5,7 +5,7 @@ var CategorySchema = new mongoose.Schema({
     ParentName: String,
     ChildrenNames: [String],
     Type: {type: Number, default: 0}, /*0-normal 1-tutorials*/
-    Chapters: [mongoose.Types.ObjectId]
+    Chapters: [mongoose.Schema.ObjectId]
 });
 
 module.exports = mongoose.model('Category', CategorySchema);

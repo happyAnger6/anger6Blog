@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var SectionSchema = new mongoose.Schema({
     Name: {type: String, required: [true]},
-    Chapter: moogoose.Types.ObjectId,
+    Chapter:  mongoose.Schema.ObjectId,
     Section: Number,
     Flag: Number
 });

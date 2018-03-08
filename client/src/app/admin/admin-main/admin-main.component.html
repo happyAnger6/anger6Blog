@@ -1,26 +1,15 @@
   <h4><i class="fa fa-windows fa-lg">管理页面</i></h4>
 
-  <div class="row">
-    <div class="col-md-4 admin-left-menu">
-      <nav class="navbar bg-light bg-danger">
-        <ul class="nav nav-tabs-justified">
-          <li class="list-group-item list-group-item-danger">
-            <i class="fa fa-check fa-lg"><a routerLink="categories">  类别管理</a></i>
-          </li>
-          <li class="list-group-item list-group-item-success">
-            <i class="fa fa-tree fa-lg"><a routerLink="articles">  文章管理</a></i>
-          </li>
-          <li class="list-group-item list-group-item-warning">
-            <i class="fa fa-user-plus fa-lg"><a routerLink="users">  用户管理</a></i>
-          </li>
-          <li class="list-group-item list-group-item-dark">
-            <i class="fa fa-list fa-lg"><a routerLink="comments">  评论管理</a></i>
-          </li>
-          <li class="list-group-item list-group-item-primary">
-            <i class="fa fa-calendar-times-o fa-lg"><a routerLink="systems">  系统管理</a></i>
-          </li>
-        </ul>
-      </nav>
+  <div class="row row-offcanvas row-offcanvas-right main-wrapper">
+    <div class="col-6 col-md-2 sidebar-offcanvas">
+      <div class="list-group-item list-group-title">选项</div>
+      <div class="list-group">
+        <i class="fa fa-check fa-lg"></i><a routerLink="categories" class="list-group-item none">  类别管理</a>
+        <i class="fa fa-tree fa-lg"></i><a routerLink="articles" class="list-group-item none">  文章管理</a>
+        <i class="fa fa-user-plus fa-lg"></i><a routerLink="users" class="list-group-item none">  用户管理</a>
+        <i class="fa fa-list fa-lg"></i><a routerLink="comments" class="list-group-item none">  评论管理</a>
+        <i class="fa fa-calendar-times-o fa-lg"></i><a routerLink="systems" class="list-group-item none">  系统管理</a>
+      </div>
     </div>
 
     <div class="col-md-8">

@@ -1,3 +1,4 @@
+<div class="main-crumbs">类别管理</div>
 <div class="btn-group">
   <button type="button" class="btn btn-default" (click)="onSelectList()">类别列表</button>
   <button type="button" class="btn btn-default" (click)="onSelectNew()">添加类别</button>
@@ -26,9 +27,9 @@ l      <select [(ngModel)]="newCategory.ParentName" name="cateParent" class="for
     <div class="form-group">
       <label>类型</label>
           <select [(ngModel)]="newCategory.Type" name="cateType" class="form-control">
-          <option [value]=0>普通</option>
-          <option [value]=1>教程(支持文章章节)</option>
-    </select>
+           <option [value]=0>普通</option>
+           <option [value]=1>教程(支持文章章节)</option>
+          </select>
     </div>
 
     <button type="submit" class="btn btn-success" [disabled]="!newCategoryForm.form.valid">添加</button>
@@ -46,6 +47,7 @@ l      <select [(ngModel)]="newCategory.ParentName" name="cateParent" class="for
         <th>类 型</th>
         <th>操 作</th>
         <th>操 作</th>
+        <th>操 作</th>
       </tr>
       </thead>
       <tbody>
@@ -55,8 +57,13 @@ l      <select [(ngModel)]="newCategory.ParentName" name="cateParent" class="for
         <td><i class="fa fa-hand-grab-o"> {{ cate.Type }} </i></td>
         <td><i class="fa fa-pencil-square-o" (click)="onEditCategory(cate._id)"> 编 辑 </i></td>
         <td><i class="fa fa-minus-square-o"  (click)="onDeleteCategory(cate._id)"> 删 除 </i></td>
+        <td><i class="fa fa-pencil-square-o"  *ngIf="cate.Type===1" (click)="onAddChapters(cate)"> 添加章节 </i></td>
       </tr>
       </tbody>
     </table>
   </div>
+</div>
+
+<div class="row" *ngIf="edit===1">
+  <app-category-add-chapters [category]="addChapterCategory"></app-category-add-chapters>
 </div>

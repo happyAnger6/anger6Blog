@@ -12,11 +12,13 @@ import { CategoryService } from '../../service/category.service';
 })
 
 export class CategoryComponent implements OnInit {
-  public newCategory = new Category('', '根', [], 0);
+  public newCategory = new Category('', '根', [], 0, []);
+  public addChapterCategory: Category;
   public allCategories:  Category[] = [];
   public allShowCategories:  ShowCategory[] = [];
 
   public oper = 0;
+  public edit = 0;
 
   constructor(private categoryService: CategoryService,
   ) { }
@@ -26,7 +28,7 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getAllCategories(function(err, all){
       if (all.length == 0)
       {
-        comp.allCategories.push(new Category('根', '-1', [], 0));
+        comp.allCategories.push(new Category('根', '-1', [], 0, []));
       }
       else
       {
@@ -52,8 +54,11 @@ export class CategoryComponent implements OnInit {
 
   onAddCategory() {
     let comp = this;
+    console.log(comp.newCategory);
     this.categoryService.addCategory(this.newCategory, function(err, result){
-      comp.refreshData();
+      if (err === null) {
+        comp.refreshData();
+      }
     })
   }
 
@@ -72,4 +77,8 @@ export class CategoryComponent implements OnInit {
     })
   }
 
+  onAddChapters(cate) {
+    this.edit = 1;
+    this.addChapterCategory = cate;
+  }
 }
