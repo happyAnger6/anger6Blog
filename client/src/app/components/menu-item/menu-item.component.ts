@@ -143,4 +143,10 @@ export class MenuItemComponent implements OnInit {
     this.initPages();
     this.selectedArticle = article;
   }
+
+  setMainClass() {
+    return {
+
+    }
+  }
 }

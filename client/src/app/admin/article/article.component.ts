@@ -35,7 +35,7 @@ export class ArticleComponent implements OnInit {
     this.categoryService.getAllCategories(function(err, all){
       if (all.length == 0)
       {
-        comp.allCategories.push(new Category('根', '-1', [], 0));
+        comp.allCategories.push(new Category('根', '-1', [], 0, []));
       }
       else
       {

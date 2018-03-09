@@ -4,13 +4,13 @@
 <section class="content-wrap">
 <div class="container">
     <div class="row">
-      <main class="col-md-8 main-content">
+      <main class="col-md-8 main-content" [class.col-md-8]="!selectedArticle">
         <app-article-pages *ngIf="!selectedArticle" [allArticles]="allArticles" (evSelectedArticle)="onSelectArticle($event)"></app-article-pages>
         <app-pages-menu *ngIf="!selectedArticle" [curPage]="curPage" [totalPages]="totalPages" (evPrePage)="onPrePage($event)" (evNextPage)="onNextPage($event)"></app-pages-menu>
         <app-article-details [article]="selectedArticle" *ngIf="selectedArticle"></app-article-details>
       </main>
 
-      <aside class="col-md-4 sidebar">
+      <aside *ngIf="!selectedArticle" class="col-md-4 sidebar">
       <app-aside></app-aside>
       </aside>
     </div>
