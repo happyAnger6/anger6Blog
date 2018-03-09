@@ -15,10 +15,13 @@ export class CategoryComponent implements OnInit {
   public newCategory = new Category('', '根', [], 0, []);
   public addChapterCategory: Category;
   public allCategories:  Category[] = [];
+  public allRootCategories: Category[];
   public allShowCategories:  ShowCategory[] = [];
+  public addParent: Category;
 
   public oper = 0;
   public edit = 0;
+  public addSub = 0;
 
   constructor(private categoryService: CategoryService,
   ) { }
@@ -26,7 +29,7 @@ export class CategoryComponent implements OnInit {
   refreshData() {
     let comp = this;
     this.categoryService.getAllCategories(function(err, all){
-      if (all.length == 0)
+      if (all.length === 0)
       {
         comp.allCategories.push(new Category('根', '-1', [], 0, []));
       }
@@ -35,18 +38,22 @@ export class CategoryComponent implements OnInit {
         comp.allCategories = all;
       }
       comp.allShowCategories = comp.categoryService.getAllShowCategories(comp.allCategories);
+      comp.allRootCategories = comp.categoryService.getAllRootCategories(comp.allCategories);
     });
   }
 
   ngOnInit() {
+    this.addSub = 0;
     this.refreshData();
   }
 
   onSelectNew() {
+    this.addSub = 0;
     this.oper = 2;
   }
 
   onSelectList()  {
+    this.addSub = 0;
     let comp = this;
     this.oper = 1;
     this.refreshData();
@@ -54,7 +61,6 @@ export class CategoryComponent implements OnInit {
 
   onAddCategory() {
     let comp = this;
-    console.log(comp.newCategory);
     this.categoryService.addCategory(this.newCategory, function(err, result){
       if (err === null) {
         comp.refreshData();
@@ -80,5 +86,21 @@ export class CategoryComponent implements OnInit {
   onAddChapters(cate) {
     this.edit = 1;
     this.addChapterCategory = cate;
+  }
+
+  getAllChildren(category) {
+    return this.categoryService.getAllChildren(this.allCategories, category);
+  }
+
+  onAddSubCategory(parent) {
+      this.addSub = 1;
+      this.addParent = parent;
+  }
+
+  addComplete(result) {
+    if (result === 0) {
+      this.refreshData();
+    }
+    this.addParent = null;
   }
 }

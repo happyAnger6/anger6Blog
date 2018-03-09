@@ -10,6 +10,7 @@ import { AdminMainComponent } from './admin-main/admin-main.component';
 import { CategoryComponent } from './category/category.component';
 import { ArticleComponent } from './article/article.component';
 import { CategoryAddChaptersComponent } from './category-add-chapters/category-add-chapters.component';
+import { CategoryAddComponent } from './category-add/category-add.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { CategoryAddChaptersComponent } from './category-add-chapters/category-a
     SharesModule,
     AdminRoutingModule
   ],
-  declarations: [AdminMainComponent, CategoryComponent, ArticleComponent, CategoryAddChaptersComponent]
+  declarations: [AdminMainComponent, CategoryComponent, ArticleComponent, CategoryAddChaptersComponent, CategoryAddComponent]
 })
 export class AdminModule { }

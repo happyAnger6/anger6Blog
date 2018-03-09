@@ -37,31 +37,39 @@ l      <select [(ngModel)]="newCategory.ParentName" name="cateParent" class="for
 </div>
 
 <br/>
-<div class="row" *ngIf="oper===1">
-  <div class="col-md-8">
-    <table class="table-bordered table-hover table-striped table-responsive">
-      <thead class="thead-dark">
-      <tr>
-        <th>名 称</th>
-        <th>父 类 别</th>
-        <th>类 型</th>
-        <th>操 作</th>
-        <th>操 作</th>
-        <th>操 作</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let cate of allCategories">
-        <td><i class="fa fa-user-circle"> {{ cate.Name}} </i></td>
-        <td><i class="fa fa-hand-grab-o"> {{ cate.ParentName }} </i></td>
-        <td><i class="fa fa-hand-grab-o"> {{ cate.Type }} </i></td>
-        <td><i class="fa fa-pencil-square-o" (click)="onEditCategory(cate._id)"> 编 辑 </i></td>
-        <td><i class="fa fa-minus-square-o"  (click)="onDeleteCategory(cate._id)"> 删 除 </i></td>
-        <td><i class="fa fa-pencil-square-o"  *ngIf="cate.Type===1" (click)="onAddChapters(cate)"> 添加章节 </i></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="row col-12 col-md-10" *ngIf="oper===1">
+  <ul class="categorieList">
+    <li *ngFor="let cate of allRootCategories">
+      <div>
+        <i class="fa fa-file-o"></i>
+      </div>
+      <div>
+      <a>{{cate.Name}}</a>
+      </div>
+      <div class="addSub">
+       <a (click)="onAddSubCategory(cate)">添加子类别</a>
+      </div>
+      <div class="addSub" *ngIf="cate===addParent">
+        <app-category-add [parent]="cate" (evAddResult)="addComplete($event)"></app-category-add>
+      </div>
+
+     <ul class="subCategorieList">
+       <li *ngFor="let subcate of getAllChildren(cate)">
+        <div class="substyle">
+         <i class="fa fa-files-o" aria-hidden="true"></i>
+        </div>
+         <div class="subName">
+         <a>{{ subcate.Name }}</a>
+         </div>
+         <div class="type">
+          <a *ngIf="subcate.Type === 1">章节类</a>
+          <a *ngIf="subcate.Type === 0">普通类</a>
+         </div>
+       </li>
+
+     </ul>
+    </li>
+  </ul>
 </div>
 
 <div class="row" *ngIf="edit===1">

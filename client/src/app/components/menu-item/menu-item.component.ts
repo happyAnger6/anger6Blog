@@ -41,13 +41,22 @@ export class MenuItemComponent implements OnInit {
   initPaths(item) {
     this.pathService.clearPaths();
     this.pathService.addPath(new Path('Home', '/', 0));
-    if(!item) return;
+    if(!item || item === "Home") return;
     this.pathService.addPath(new Path(item, '/menu/' + item, 0));
   }
 
   initPages() {
     this.curPage = 1;
     this.totalPages = 1;
+  }
+
+  onGetArticlesByMenu(menu) {
+    this.initPaths(menu);
+    this.paths = this.pathService.getPaths();
+    if (menu === null || menu === "Home") {
+      return this.articleService.getArticles()
+    }
+    return this.articleService.getArticlesByCategory(menu);
   }
 
   ngOnInit() {
@@ -60,12 +69,7 @@ export class MenuItemComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         comp.menu_item = params.get('category');
-        comp.initPaths(comp.menu_item);
-        comp.paths = this.pathService.getPaths();
-        if (comp.menu_item === null) {
-          return this.articleService.getArticles()
-        }
-        return comp.articleService.getArticlesByCategory(comp.menu_item);
+        return this.onGetArticlesByMenu(comp.menu_item);
       })
       .subscribe(result => {
         comp.allArticles = result;
@@ -85,10 +89,12 @@ export class MenuItemComponent implements OnInit {
     this.selectedArticle = null;
     this.initPaths(item);
     this.paths = this.pathService.getPaths();
-    this.articleService.getArticlesByCategory(item)
+    this.onGetArticlesByMenu(item)
       .subscribe(result => {
         comp.allArticles = result;
         comp.totalPages = Math.ceil(comp.allArticles.length/comp.pageItems);
+        comp.curPage = 1;
+        comp.allArticles = comp.allArticles.slice(0, comp.pageItems);
       },
       err => {
 
@@ -97,7 +103,7 @@ export class MenuItemComponent implements OnInit {
 
   onPrePage(page) {
     let comp = this;
-    if (this.menu_item) {
+    if (this.menu_item && this.menu_item !== "Home") {
       this.articleService.getArticlesByCategoryByPage(this.menu_item, page)
         .subscribe(result => {
           if (result.length != 0) {
@@ -119,7 +125,7 @@ export class MenuItemComponent implements OnInit {
 
   onNextPage(page) {
     let comp = this;
-    if (this.menu_item) {
+    if (this.menu_item && this.menu_item !== "Home") {
       this.articleService.getArticlesByCategoryByPage(this.menu_item, page)
         .subscribe(result => {
           if (result.length != 0) {

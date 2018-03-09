@@ -95,6 +95,20 @@ export class CategoryService {
     return allChildren;
   }
 
+  getAllChildren(categories: Category[], parent) {
+    let allChildren: Category[] = [];
+    const node = this.getNodeByName(categories, parent.Name);
+    if (node != null) {
+      node.ChildrenNames.forEach((val, idx, ary) => {
+        const childNode = this.getNodeByName(categories, val);
+        if (childNode != null) {
+          allChildren.push(childNode);
+        }
+      })
+    }
+    return  allChildren;
+  }
+
   getAllRootCategories(categories: Category[]) {
     return this.getRootChildren(categories);
   }

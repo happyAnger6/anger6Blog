@@ -1,0 +1,27 @@
+<div class="container">
+  <label><i class="fa fa-plus-square" aria-hidden="true">添加类别</i></label>
+  <form (ngSubmit)="onAddCategory()" #newCategoryForm="ngForm">
+
+    <div class="form-group">
+      <label for="Name">类别名称:</label>
+      <input type="text" class="form-control" id="Name" [(ngModel)]="newCategory.Name" name="categoryName" required #categoryName="ngModel"/>
+    </div>
+    <div [hidden]="categoryName.valid || categoryName.pristine" class="alert alert-danger">
+      必须输入名字.
+    </div>
+
+    <div class="father">
+      <label>父类别: {{parent.Name}}</label>
+    </div>
+
+    <div class="form-group">
+      <label>类型</label>
+      <select [(ngModel)]="newCategory.Type" name="cateType" class="form-control">
+        <option [value]=0>普通</option>
+        <option [value]=1>教程(支持文章章节)</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!newCategoryForm.form.valid">添加</button>
+  </form>
+</div>
