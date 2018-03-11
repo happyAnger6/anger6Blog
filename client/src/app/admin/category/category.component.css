@@ -65,6 +65,10 @@ label {
   margin-left: 0.5em;
 }
 
+.subCategorieList .subName *{
+  display: inline-block;
+}
+
 .subCategorieList a {
   text-decoration: none;
   padding-left: 0.4em;
@@ -72,3 +76,9 @@ label {
   color: #00B7FF;
 }
 
+.operCategory a {
+  cursor: pointer;
+}
+
+.addChapters {
+}

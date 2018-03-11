@@ -1,0 +1,23 @@
+<div class="x-sidebar-left">
+  <div class="x-sidebar-left-content">
+    <ul class="ul-catelog">
+      <li class="li-catelog">目录</li>
+      <li class="li-catelog-all"><i class="fa fa-plus-square-o" (click)="onExpandAll()"></i></li>
+      <li class="li-catelog-none"><i class="fa fa-minus-square-o" (click)="onExpandNone()"></i></li>
+    </ul>
+    <ul class="cs">
+      <div class="cs-active">
+       <div class="cs-item" *ngFor="let chapter of allChapters">
+         <i class="fa fa-plus-square-o" aria-hidden="true" *ngIf="!isExpanded(chapter.Name)" (click)="onExpandChapter(chapter.Name)"></i>
+         <i class="fa fa-minus-square-o" aria-hidden="true" *ngIf="isExpanded(chapter.Name)" (click)="onExpandChapter(chapter.Name)"></i>
+         <a class="cs-c-index" (click)="onSelectItem(chapter.Category, chapter.Num, 0)">{{chapter.Name}}</a>
+         <div class="cs-s-item-container" *ngIf="isExpanded(chapter.Name)">
+           <div class="cs-s-item" *ngFor="let section of chapter.Sections">
+            <a class="cs-s-index" (click)="onSelectItem(chapter.Category, chapter.Num, section.Num)">{{section.Name}}</a>
+           </div>
+         </div>
+       </div>
+      </div>
+    </ul>
+  </div>
+</div>

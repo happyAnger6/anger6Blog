@@ -32,6 +32,6 @@ export class CategoryCloudComponent implements OnInit {
   }
 
   onSelectTag(cate) {
-    this.route.navigate(['/menu', { category: cate}])
+    this.route.navigate(['/menu', {category: cate}])
   }
 }

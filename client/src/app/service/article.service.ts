@@ -42,6 +42,10 @@ export class ArticleService {
   getArticlesByCategory(category: string) {
     return this.http.get<Article[]>(API_ARTICLES_URI + 'json?category=' + category)
   }
+// 获取某个组件的用户信息
+  getArticlesByChapterSection(category: string, chapter: number, section: number) {
+    return this.http.get<Article[]>(API_ARTICLES_URI + 'json?category=' + category + '&chapter=' + chapter + '&section=' + section);
+  }
 
   getArticlesById(id) {
     return this.http.get<Article[]>(API_ARTICLES_URI + id + '/json')

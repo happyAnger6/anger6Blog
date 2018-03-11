@@ -17,7 +17,7 @@ router.get('/json', function(req, res, next) {
 
 router.post('/create', function(req, res, next){
    var section = new Section(req.body);
-   Chapter.findOne({_id: section.Chapter}, function(err, chapter){
+   Chapter.findOne({_id: mongoose.Types.ObjectId(section.Chapter)}, function(err, chapter){
        if (err) return next(err);
        if (chapter === null) {
            var err = 'chapter is not exist!';
@@ -30,7 +30,7 @@ router.post('/create', function(req, res, next){
                if (err) {
                    return next(err);
                }
-               res.json(u);
+               res.json(s);
            })
        })
    })

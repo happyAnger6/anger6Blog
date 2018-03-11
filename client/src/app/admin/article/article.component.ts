@@ -21,11 +21,15 @@ export class ArticleComponent implements OnInit {
   public pageItems = 5;
 
   public newArticle = new Article('', '', '安哥6',
-    [], '', 0, 0, [], Date.now());
+    [], '', 0, 0, [], 0, 0, Date.now());
   public allArticles: Article[] = [];
 
   public allCategories: Category[];
   public allShowCategories: ShowCategory[];
+  public selectedCategory: Category;
+
+  public maxChapter: Array<number> = [];
+  public maxSection: Array<number> = [];
 
   constructor(private categoryService: CategoryService,
               private articleService: ArticleService) { }
@@ -47,6 +51,11 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit() {
     this.refreshData();
+
+    for(let i = 0; i < 31; i++) {
+      this.maxChapter.push(i);
+      this.maxSection.push(i);
+    }
   }
 
   onSelectNew() {

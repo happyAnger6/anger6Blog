@@ -3,7 +3,9 @@ import { Category } from '../models/category';
 import { ShowCategory } from '../models/showCategory';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_CATEGORIES_URI, API_URI } from "../shared/httpApi";
+import { API_CATEGORIES_URI, API_URI } from '../shared/httpApi';
+import { Chapter } from '../models/chapter';
+import {ShowChapter} from "../models/showChapter";
 
 @Injectable()
 export class CategoryService {
@@ -28,6 +30,10 @@ export class CategoryService {
      }
     )
    }
+
+  updateCategory(updateCategory) {
+    return this.http.post(API_CATEGORIES_URI + updateCategory._id + '/update', updateCategory)
+  }
 
   delCategory(id, fn) {
     this.http.post(API_CATEGORIES_URI + id + '/delete', null)
@@ -117,4 +123,11 @@ export class CategoryService {
     return this.drawNodes(categories);
   }
 
+  getAllChapters(category) {
+    return this.http.get<ShowChapter[]>(API_CATEGORIES_URI + category._id + '/chapters');
+  }
+
+  getAllChaptersByName(name) {
+    return this.http.get<ShowChapter[]>(API_CATEGORIES_URI +  '/chapters' + '?name=' + name);
+  }
 }

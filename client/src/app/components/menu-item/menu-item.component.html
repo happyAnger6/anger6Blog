@@ -1,20 +1,19 @@
 <app-menu-list (evSelectMenu)="onSelectedMenu($event)"></app-menu-list>
 <app-path-nav (evSelectedMenu)="onSelectedMenu($event)" [paths]="paths"></app-path-nav>
 
-<section class="content-wrap">
-<div class="container">
     <div class="row">
+      <aside *ngIf="allChapters.length > 0" class="col-md-2">
+       <app-chapters-sections-menu [allChapters]="allChapters" (evSelectedArticle)="onSelectArticle($event)"></app-chapters-sections-menu>
+      </aside>
       <main class="col-md-8 main-content" [class.col-md-8]="!selectedArticle">
-        <app-article-pages *ngIf="!selectedArticle" [allArticles]="allArticles" (evSelectedArticle)="onSelectArticle($event)"></app-article-pages>
-        <app-pages-menu *ngIf="!selectedArticle" [curPage]="curPage" [totalPages]="totalPages" (evPrePage)="onPrePage($event)" (evNextPage)="onNextPage($event)"></app-pages-menu>
+        <app-article-pages *ngIf="!selectedArticle && allChapters.length===0 && curPage!==0" [allArticles]="allArticles" (evSelectedArticle)="onSelectArticle($event)"></app-article-pages>
+        <app-pages-menu *ngIf="!selectedArticle && allChapters.length===0 && curPage!==0" [curPage]="curPage" [totalPages]="totalPages" (evPrePage)="onPrePage($event)" (evNextPage)="onNextPage($event)"></app-pages-menu>
         <app-article-details [article]="selectedArticle" *ngIf="selectedArticle"></app-article-details>
       </main>
 
-      <aside *ngIf="!selectedArticle" class="col-md-4 sidebar">
+      <aside *ngIf="!selectedArticle && allChapters.length===0" class="col-md-4 sidebar">
       <app-aside></app-aside>
       </aside>
     </div>
-</div>
-</section>
 
 

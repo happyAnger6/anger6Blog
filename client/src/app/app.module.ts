@@ -14,6 +14,8 @@ import { AuthService } from './service/auth.service';
 import { CategoryService } from './service/category.service';
 import { ArticleService } from './service/article.service';
 import { PathNavService } from './service/path-nav.service';
+import { ChapterService } from './service/chapter.service';
+import { SectionService } from './service/section.service';
 
 import { AuthInterceptor } from './shared/authInterceptor';
 import { TimingInterceptor } from './shared/timingInterceptor';
@@ -30,6 +32,7 @@ import { MyHomesComponent } from './components/my-homes/my-homes.component';
 import { BlogSourcesComponent } from './components/blog-sources/blog-sources.component';
 import { CategoryCloudComponent } from './components/category-cloud/category-cloud.component';
 import { MyProjectsListComponent } from './components/my-projects-list/my-projects-list.component';
+import { ChaptersSectionsMenuComponent } from './components/chapters-sections-menu/chapters-sections-menu.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { MyProjectsListComponent } from './components/my-projects-list/my-projec
     BlogSourcesComponent,
     CategoryCloudComponent,
     MyProjectsListComponent,
+    ChaptersSectionsMenuComponent,
   ],
   imports: [
     NgbModule.forRoot(),
@@ -59,6 +63,8 @@ import { MyProjectsListComponent } from './components/my-projects-list/my-projec
     AuthService,
     AuthGuardService,
     CategoryService,
+    ChapterService,
+    SectionService,
     ArticleService,
     PathNavService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

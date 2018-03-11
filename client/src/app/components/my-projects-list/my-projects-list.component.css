@@ -1,0 +1,39 @@
+h4 {
+  margin-left: 1em;
+  color: #f0ad4e;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid #e4b9b9;
+}
+
+.project-lists {
+  margin-left: 15px;
+  margin-bottom: 35px;
+  background-color: #FFFFFF;
+  padding: 1em 0.5em;
+}
+
+li {
+  list-style: none;
+}
+
+.project-name a{
+  color: #9c3328;
+  font-size: 1.25em;
+  text-decoration: none;
+}
+
+.project-one-items {
+  margin: 0.5em 2em;
+  padding: 0.25em 0;
+}
+
+.project-one-items li {
+  margin-top: .4em;
+}
+.project-one-items a {
+  text-decoration: none;
+}
+
+.project-one-items a:hover {
+  color: #9c3328;
+}

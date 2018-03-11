@@ -4,5 +4,6 @@ export class Article{
   constructor(public Title: string, public Content: string, public Author: string,
               public Comments: Comment[], public Category: string,
               public Likes: Number, public UnLikes: Number, public Tags: string[],
+              public Chapter: Number, public Section: Number,
               public PublishDate: Number) {}
 }

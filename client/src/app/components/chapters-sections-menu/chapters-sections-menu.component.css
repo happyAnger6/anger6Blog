@@ -1,0 +1,44 @@
+.x-sidebar-left {
+  padding: 1em 0;
+  background-color: #FFFFFF;
+  border-right: 1px solid #ddd;
+}
+
+.li-catelog {
+  padding-bottom: 0.5em;
+  color: #00B7FF;
+  font-size: 1.5em;
+}
+
+.ul-catelog {
+  border-bottom: 1px solid #444443;
+}
+
+.ul-catelog li {
+  display: inline-block;
+}
+
+.ul-catelog .li-catelog-all {
+  color: #00B7FF;
+  margin-left: 5em;
+}
+
+.ul-catelog .li-catelog-none {
+  margin-left: 1em;
+  color: #00B7FF;
+}
+
+.cs-c-index {
+  color: #9c3328;
+  text-decoration: none;
+}
+.cs-s-item {
+  margin-left: 1.5em;
+  padding: 0.25em 0.25em 0.25em 0.25em;
+}
+
+.cs-s-item a {
+  color: #e4b9b9;
+  text-decoration: none;
+  cursor: pointer;
+}

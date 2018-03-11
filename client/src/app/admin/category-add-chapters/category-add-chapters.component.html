@@ -1,3 +1,76 @@
-<div class="row">
-  {{ category.Name }}
+<div class="header">
+  <div class="main-crumbs">
+    {{category.Name}} 添加章节
+  </div>
+  <div class="oper">
+      <button type="button" class="btn-danger" (click)="onAddChapter()" *ngIf="operFlag!==1">添加一章</button>
+      <button type="button" class="btn-danger" (click)="onCancelAddChapter()" *ngIf="operFlag===1">取消</button>
+  </div>
+</div>
+
+<div class="chapterContainer" *ngIf="operFlag===1">
+  <label><i class="fa fa-plus-square" aria-hidden="true">添加章节</i></label>
+  <form (ngSubmit)="onSubmitAddChapter()" #newChapterForm="ngForm">
+
+    <div class="form-group">
+      <label for="Name">名称:</label>
+      <input type="text" class="form-control" id="Name" [(ngModel)]="newChapter.Name" name="chapterName" required #chapterName="ngModel"/>
+    </div>
+    <div [hidden]="chapterName.valid || chapterName.pristine" class="alert alert-danger">
+      必须输入名字.
+    </div>
+
+    <div class="form-group">
+      <label>章数</label>
+      <select [(ngModel)]="newChapter.Num" name="chapterNum" class="form-control">
+        <option *ngFor="let i of maxChapter" [value]=i>{{i}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!newChapterForm.form.valid">添加</button>
+  </form>
+</div>
+
+<div>
+  <ol class="chapters">
+    <li *ngFor="let chapter of allChapters">
+      <div class="chapterName">
+        {{ chapter.Name }}
+      </div>
+      <div class="chapterOper">
+        <button type="button" class="btn btn-primary" (click)="onAddSection(chapter)">添加小节</button>
+      </div>
+
+      <div class="sectionContainer" *ngIf="operFlag===2&&chapter===selectChapter">
+        <label><i class="fa fa-plus-square" aria-hidden="true">添加小节</i></label>
+        <form (ngSubmit)="onSubmitAddSection(chapter)" #newSectionForm="ngForm">
+
+          <div class="form-group">
+            <label for="Name">名称:</label>
+            <input type="text" class="form-control" id="SecName" [(ngModel)]="newSection.Name" name="sectionName" required #sectionName="ngModel"/>
+          </div>
+          <div [hidden]="sectionName.valid || sectionName.pristine" class="alert alert-danger">
+            必须输入名字.
+          </div>
+
+          <div class="form-group">
+            <label>节数</label>
+            <select [(ngModel)]="newSection.Num" name="sectionNum" class="form-control">
+              <option *ngFor="let i of maxSection" [value]=i>{{i}}</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-success" [disabled]="!newSectionForm.form.valid">添加</button>
+        </form>
+      </div>
+
+      <ol class="sections">
+        <li *ngFor="let section of chapter.Sections">
+          <div class="sectionName">
+            {{ section.Name }}
+          </div>
+        </li>
+      </ol>
+    </li>
+  </ol>
 </div>

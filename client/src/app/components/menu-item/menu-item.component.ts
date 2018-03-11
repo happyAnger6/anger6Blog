@@ -7,6 +7,7 @@ import {CategoryService} from "../../service/category.service";
 import {Category} from "../../models/category";
 import {PathNavService} from "../../service/path-nav.service";
 import {Path} from "../../models/path";
+import {ShowChapter} from "../../models/showChapter";
 
 @Component({
   selector: 'app-menu-item',
@@ -17,10 +18,12 @@ export class MenuItemComponent implements OnInit {
   public menu_item: string;
   public allArticles: Article[] = [];
   public allRootCategories: Category[] = [];
+  public allChapters: ShowChapter[] = [];
+
   public selectedArticle;
   public paths;
-  public curPage = 1;
-  public totalPages = 1;
+  public curPage = 0;
+  public totalPages = 0;
   public pageItems = 5;
 
   refreshData() {
@@ -46,8 +49,8 @@ export class MenuItemComponent implements OnInit {
   }
 
   initPages() {
-    this.curPage = 1;
-    this.totalPages = 1;
+    this.curPage = 0;
+    this.totalPages = 0;
   }
 
   onGetArticlesByMenu(menu) {
@@ -69,13 +72,36 @@ export class MenuItemComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         comp.menu_item = params.get('category');
-        return this.onGetArticlesByMenu(comp.menu_item);
+        if(comp.menu_item === "Home" || comp.menu_item === null) {
+          comp.onGetArticlesByMenu(comp.menu_item)
+            .subscribe(result => {
+              comp.allArticles = result;
+              comp.totalPages = Math.ceil(comp.allArticles.length/comp.pageItems);
+              comp.curPage = 0;
+              if(comp.totalPages > 0) {
+                comp.curPage = 1;
+              }
+              comp.allArticles = comp.allArticles.slice(0, comp.pageItems);
+            })
+        }
+        else {
+          return this.categoryService.getAllChaptersByName(comp.menu_item);
+        }
       })
       .subscribe(result => {
-        comp.allArticles = result;
-        comp.curPage = 1;
-        comp.totalPages = Math.ceil(comp.allArticles.length/comp.pageItems);
-        comp.allArticles = comp.allArticles.slice(0, comp.pageItems);
+        comp.allChapters = result;
+        if (comp.allChapters.length <= 0) {
+          comp.onGetArticlesByMenu(comp.menu_item)
+            .subscribe(result => {
+              comp.allArticles = result;
+              comp.totalPages = Math.ceil(comp.allArticles.length/comp.pageItems);
+              comp.curPage = 0;
+              if(comp.totalPages > 0) {
+                comp.curPage = 1;
+              }
+              comp.allArticles = comp.allArticles.slice(0, comp.pageItems);
+            })
+        }
       },
       err => {
       }
@@ -85,20 +111,34 @@ export class MenuItemComponent implements OnInit {
   onSelectedMenu(item) {
     let comp = this;
     this.initPages();
+
     this.menu_item = item;
     this.selectedArticle = null;
+    this.allChapters = [];
+
     this.initPaths(item);
     this.paths = this.pathService.getPaths();
+
     this.onGetArticlesByMenu(item)
       .subscribe(result => {
         comp.allArticles = result;
         comp.totalPages = Math.ceil(comp.allArticles.length/comp.pageItems);
-        comp.curPage = 1;
+        comp.curPage = 0;
+        if(comp.totalPages > 0) {
+          comp.curPage = 1;
+        }
         comp.allArticles = comp.allArticles.slice(0, comp.pageItems);
       },
       err => {
 
-      })
+      });
+
+    if(item !== "Home") {
+      this.categoryService.getAllChaptersByName(item)
+        .subscribe(result => {
+           comp.allChapters = result;
+        })
+    }
   }
 
   onPrePage(page) {
@@ -147,6 +187,7 @@ export class MenuItemComponent implements OnInit {
 
   onSelectArticle(article) {
     this.initPages();
+    console.log(article);
     this.selectedArticle = article;
   }
 

@@ -59,12 +59,23 @@ l      <select [(ngModel)]="newCategory.ParentName" name="cateParent" class="for
          <i class="fa fa-files-o" aria-hidden="true"></i>
         </div>
          <div class="subName">
-         <a>{{ subcate.Name }}</a>
+           <input type="text" [disabled]=true [(ngModel)]="subcate.Name">
          </div>
          <div class="type">
-          <a *ngIf="subcate.Type === 1">章节类</a>
-          <a *ngIf="subcate.Type === 0">普通类</a>
+          <a *ngIf="subcate.Type === 1">支持章节</a>
+          <a *ngIf="subcate.Type === 0">普通</a>
          </div>
+         <div class="operCategory">
+           <a (click)="deleteCategory(subcate)">删除</a>
+           <a *ngIf="subcate.Type===1" (click)="addChapterSectionForCategory(subcate)">添加章节</a>
+         </div>
+         <app-category-add-chapters *ngIf="subcate===addChapterCategory" [category]="subcate"></app-category-add-chapters>
+        <!-- <div class="operCategory">
+           <a *ngIf="subcate!=editCategory" (click)="editSubCategory(subcate)">编辑</a>
+           <a *ngIf="subcate==editCategory" (click)="confirmEditSubCategory(subcate)">确认</a>
+           <a *ngIf="subcate==editCategory" (click)="cancelEditSubCategory(subcate)">取消</a>
+           <a>删除</a>
+         </div>-->
        </li>
 
      </ul>

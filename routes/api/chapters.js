@@ -16,23 +16,26 @@ router.get('/json', function(req, res, next) {
 
 router.post('/create', function(req, res, next){
    var chapter = new Chapter(req.body);
-   Category.findOne({_id: chapter.Category}, function(err, category){
+   Category.findOne({Name: chapter.Category}, function(err, category) {
        if (err) return next(err);
+       console.log(chapter, category);
        if (category === null) {
            var err = 'category is not exist!';
            return res.status(500).json({errmsg: err});
        }
-       category.Chapters.push(chapter.Category);
-       category.save(function (err, parent){
-           if (err) return next(err);
-           chapter.save(function (err, u){
+       chapter.save(function (err, u) {
+           if (err) {
+               return next(err);
+           }
+           category.Chapters.push(u._id);
+           category.save(function (err, c) {
                if (err) {
                    return next(err);
                }
-               res.json(u);
-           })
-       })
-   })
+               res.json(u)
+           });
+       });
+   });
 });
 
 router.post('/:id/delete', function(req, res, next){
@@ -46,7 +49,7 @@ router.post('/:id/delete', function(req, res, next){
             var err = 'chapter is not exist!';
             return res.status(500).json({errmsg: err});
         }
-        Category.findOne({_id: chapter.Category}, function(err, category) {
+        Category.findOne({Name: chapter.Category}, function(err, category) {
             if (err) {
                 return next(err);
             }

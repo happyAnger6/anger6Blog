@@ -18,9 +18,10 @@ export class CategoryComponent implements OnInit {
   public allRootCategories: Category[];
   public allShowCategories:  ShowCategory[] = [];
   public addParent: Category;
+  public editCategory: Category;
 
   public oper = 0;
-  public edit = 0;
+  public edit = 0; //1.edit category 2.add chapter and section for category
   public addSub = 0;
 
   constructor(private categoryService: CategoryService,
@@ -84,7 +85,7 @@ export class CategoryComponent implements OnInit {
   }
 
   onAddChapters(cate) {
-    this.edit = 1;
+    this.edit = 2;
     this.addChapterCategory = cate;
   }
 
@@ -102,5 +103,33 @@ export class CategoryComponent implements OnInit {
       this.refreshData();
     }
     this.addParent = null;
+  }
+
+  editSubCategory(subcate) {
+   this.edit = 1;
+   this.editCategory = subcate;
+  }
+
+  deleteCategory(subcate) {
+    this.categoryService.delCategory(subcate._id, function(err, result){
+
+    })
+  }
+
+  addChapterSectionForCategory(cate) {
+    this.addChapterCategory = cate;
+  }
+
+  cancelEditSubCategory(subcate) {
+    this.edit = 0;
+    this.editCategory = null;
+  }
+
+  confirmEditSubCategory(subcate) {
+    this.categoryService.updateCategory(subcate)
+      .subscribe(result => {
+        this.edit = 0;
+        this.editCategory = null;
+      })
   }
 }

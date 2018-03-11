@@ -9,16 +9,28 @@ var Article = require('../../models/article');
 /* GET categories listing. */
 router.get('/json', function(req, res, next) {
     if(req.query && req.query.category) {
-        console.log("category", req.query.category);
-        Article.find({Category: req.query.category}).sort({PublishDate: 1})
-            .exec(function(err, articles){
-                if (err) {
-                    return next(err);
-                }
-                req.totals = articles;
-                next();
-                //res.json(articles);
-            });
+        if(req.query.chapter && req.query.section) {
+            var chapter = Number(req.query.chapter);
+            var section = Number(req.query.section);
+            Article.find({Category: req.query.category, Chapter: chapter, Section: section}).sort({PublishDate: 1})
+                .exec(function(err, articles){
+                    if (err) {
+                        return next(err);
+                    }
+                    res.json(articles);
+                 });
+        }
+        else {
+            Article.find({Category: req.query.category}).sort({PublishDate: 1})
+                .exec(function(err, articles){
+                    if (err) {
+                        return next(err);
+                    }
+                    req.totals = articles;
+                    next();
+                    //res.json(articles);
+                });
+        }
     }
     else {
         console.log("all");
@@ -41,7 +53,7 @@ router.get('/:id/json', function(req, res, next) {
             return next(err);
         }
 
-        if (art == null) {
+        if (art === null) {
             var err = 'article is not exist!';
             return res.status(500).json({errmsg: err});
         }
