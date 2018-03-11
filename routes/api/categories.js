@@ -61,7 +61,12 @@ router.get('/chapters', function(req, res, next) {
         if (err)  {
             return next(err);
         }
-        getNextChapter(0, category.Chapters, category.Chapters.length, chapters, res, next);
+        if(category.Chapters) {
+            getNextChapter(0, category.Chapters, category.Chapters.length, chapters, res, next);
+        }
+        else {
+            res.json([]);
+        }
     })
 });
 
