@@ -36,4 +36,18 @@ export class ArticleDetailsComponent implements OnInit {
     );
   }
 
+  onLike(article) {
+    this.articleService.addLikes(article._id)
+      .subscribe(result => {
+        article.Likes++;
+      })
+  }
+
+  onUnLike(article) {
+    this.articleService.addUnLikes(article._id)
+      .subscribe(result => {
+        article.UnLikes++;
+      })
+  }
+
 }

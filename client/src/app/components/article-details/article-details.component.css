@@ -36,6 +36,10 @@
   text-align: center;
 }
 
+.post .post-meta1 i{
+  cursor: pointer;
+}
+
 .post .post-content {
   margin: 30px 0;
 }

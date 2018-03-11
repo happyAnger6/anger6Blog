@@ -8,8 +8,8 @@
         <time class="post-date">{{article.PublishDate}}</time>
       </div>
       <div class="post-meta1">
-        <i class="fa fa-thumbs-o-up" >喜欢 {{ article.Likes }}</i>
-        <i class="fa fa-thumbs-o-down" >不喜欢 {{ article.UnLikes }}</i>
+        <i class="fa fa-thumbs-o-up" (click)="onLike(article)">喜欢 {{ article.Likes }}</i>
+        <i class="fa fa-thumbs-o-down" (click)="onUnLike(article)">不喜欢 {{ article.UnLikes }}</i>
       </div>
       <div class="post-content">
         <p [innerHTML]="article.Content"></p>
