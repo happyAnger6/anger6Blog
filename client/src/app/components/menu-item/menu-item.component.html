@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
       <aside *ngIf="allChapters.length > 0" class="col-md-4">
-       <app-chapters-sections-menu [allChapters]="allChapters" (evSelectedArticle)="onSelectArticle($event)"></app-chapters-sections-menu>
+       <app-chapters-sections-menu [category]="menu_item" [allChapters]="allChapters" (evSelectedArticle)="onSelectArticle($event)"></app-chapters-sections-menu>
       </aside>
       <main class="col-md-8 main-content" [class.col-md-8]="!selectedArticle">
         <app-article-pages *ngIf="!selectedArticle && allChapters.length===0 && curPage!==0" [allArticles]="allArticles" (evSelectedArticle)="onSelectArticle($event)"></app-article-pages>
