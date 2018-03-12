@@ -20,6 +20,7 @@ export class ChaptersSectionsMenuComponent implements OnInit {
 
   ngOnInit() {
     this.onExpandAll();
+    this.onSelectItem(this.category, 0, 0);
   }
 
   onExpandChapter(name) {
