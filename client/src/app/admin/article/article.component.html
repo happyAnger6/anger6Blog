@@ -51,6 +51,7 @@
       <div class="article-item" *ngFor="let article of allArticles">
         <h2>{{ article.Title }}</h2>
         <footer>{{article.Author}} 发表于: {{ article.PublishDate }}</footer>
+        <button type="button btn-danger" (click)="onEditArticle(article)">编辑</button>
       </div>
       <app-pages-menu [curPage]="curPage" [totalPages]="totalPages" (evPrePage)="onPrePage($event)" (evNextPage)="onNextPage($event)"></app-pages-menu>
     </div>

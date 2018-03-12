@@ -101,4 +101,9 @@ export class ArticleComponent implements OnInit {
     })
   }
 
+  onEditArticle(article) {
+    this.newArticle = article;
+    this.selectedItem = 2;
+  }
+
 }
