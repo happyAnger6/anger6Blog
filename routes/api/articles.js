@@ -65,14 +65,34 @@ router.get('/:id/json', function(req, res, next) {
 
 router.post('/create', function(req, res, next) {
     var req_article = new Article(req.body);
-    req_article.save(function (err, u) {
-        if (err) {
-            return next(err);
-        }
-        else {
-            res.json(u);
-        }
-    })
+    var chapter = req_article.Chapter;
+    var section = req_article.Section;
+
+    Article.findOne({Title: req_article.Title, Category: req_article.Category, Chapter: chapter, Section: section},
+        function(err, art){
+            if(art === null) {
+                req_article.save(function (err, u) {
+                    if (err) {
+                        return next(err);
+                    }
+                    else {
+                        res.json(u);
+                    }
+                })
+            }
+            else {
+                art.Content = req_article.Content;
+                art.PublishDate = Date.now();
+                art.save(function (err, u) {
+                    if (err) {
+                        return next(err);
+                    }
+                    else {
+                        res.json(u);
+                    }
+                })
+            }
+        })
 });
 
 router.post('/:id/update', function(req, res, next) {
